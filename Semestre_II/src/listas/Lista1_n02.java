@@ -2,8 +2,6 @@ package listas;
 
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class Lista1_n02 {
 
 	public static void main(String[] args) {
@@ -12,13 +10,11 @@ public class Lista1_n02 {
 		
 		final int arraySize = 5;
 		int[] array = new int[ arraySize ]; // cria um array de inteiros
-		int option = 0; // corrigir (desperdicio de espaco de armazenamento)
+		char option = 0;
 		int count = 0;
 		int valueForSearch;
 		int aux;
 		int countWhile = 0;
-		int indexFound = -1;
-		boolean found = false;
 		
 		for( int i = 0; i < array.length; i++ )
 		{
@@ -36,15 +32,16 @@ public class Lista1_n02 {
 							 + "5 - Sair");
 			
 			System.out.print("\nOpcao: ");
-			option = in.nextInt();
+			option = in.next().charAt(0);
 			
 			switch( option )
 			{
-				case 1:
+				case '1':
+					
+					// POPULACAO DO VETOR
 					
 					System.out.println("");
-					
-					// preenchendo vetor
+
 					for( int i = 0; i < array.length; i++ )
 					{
 						System.out.print((i + 1) + "º Valor: ");
@@ -57,27 +54,27 @@ public class Lista1_n02 {
 					
 					break;
 				
-				case 2:
+				case '2':
 					
-					// checa se o vetor esta vazio
-					if( count == array.length )
-					{
+					// ORDENACAO
+					
+					if( count == array.length ) {
+						
 						System.out.println("\n>>> Nao foram encontrado dados a serem organizados!\n");
+					
 					} else {
 						
-						// ordenacao do vetor
 						for( int i = 0; i < array.length - 1; i++ )
 						{
 							for( int j = 0; j < array.length - 1 - i; j++ )
 							{
-								if( array[ j ] > array[ j + 1] )
-								{
+								if( array[ j ] > array[ j + 1] ) {
 									
 									aux = array[ j ];
 									array[ j ] = array[ j + 1 ];
 									array[ j + 1 ] = aux;
 									
-								} // fim do if interno
+								} // fim do if
 								
 							} // fim do for interno
 							
@@ -89,47 +86,48 @@ public class Lista1_n02 {
 					
 					break;
 					
-				case 3:
+				case '3':
 					
-					// Pesquisa de dado
+					// PESQUISA
 					
-					if( count == array.length )
-					{
+					if( count == array.length ) {
+						
 						System.out.println("\n>>>Sem dados no vetor para pesquisar!\n");
+					
 					} else {
 						
 						System.out.print("\nInforme um valor inteiro para a pesquisa: \n");
 						valueForSearch = in.nextInt();
 					
-						while( countWhile < array.length && found == false )
+						while( (countWhile < array.length) && (valueForSearch != array[ countWhile ]) )
 						{
-							if( array[ countWhile ] == valueForSearch )
-							{
-								found = true;
-								indexFound = countWhile; 
-							}
 							countWhile++;
 						}
-					
-						if( found != false )
-						{
-							System.out.println("\n*** A sua pesquisa retornou o seguinte resultado:\n"
-									+ "Valor: " + valueForSearch + " encontrado na posicao [ " + indexFound + " ]\n");
-						}
 						
+						if( countWhile == array.length ) {
+							
+							System.out.println("\n## A pesquisa nao retornou resultado");
+						
+						} else {
+						
+							System.out.println("\n## Resultado encontrado na posicao: " + countWhile);
+						
+						}
+
 					} // fim do if/else
 					
 					break;
 					
-				case 4:
+				case '4':
 					
-					// LISTAGEM DOS DADOS DO VETOR
+					// LISTAGEM
 					
 					System.out.println("");
 					
-					if( count == array.length )
-					{
+					if( count == array.length ) {
+						
 						System.out.println("\n>>>Dados para listagem nao encontrados!\n");
+					
 					} else {
 						
 						for( int i = 0; i < array.length; i++ )
@@ -151,7 +149,7 @@ public class Lista1_n02 {
 					
 			} // fim do switch
 			
-		} while (option != 5);
+		} while (option != '5');
 
 	}
 
