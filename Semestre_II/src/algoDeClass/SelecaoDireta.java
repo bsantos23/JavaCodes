@@ -4,7 +4,6 @@ public class SelecaoDireta {
 
 	public static void main(String[] args) {
 		
-		int arraySize = 10;
 		int array[] = {2, 3, 4, 6, 5, 8, 7, 1, 9, 1};
 		int currentIndex;
 		int currentValue;
