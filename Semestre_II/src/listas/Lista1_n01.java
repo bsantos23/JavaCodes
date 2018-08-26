@@ -11,6 +11,7 @@ public class Lista1_n01 {
 		final int arraySize = 5;
 		int[] A = new int[ arraySize ];
 		int aux;
+		int pesquisa;
 		
 		System.out.println("########## Preenchimento do vetor ##########\n");
 		for( int i = 0; i < A.length; i++ )
@@ -54,12 +55,16 @@ public class Lista1_n01 {
 		
 		System.out.println("\n\n########## Pesquisa no vetor ##########\n");
 		
+		System.out.println("Valor a pesquisar: ");
+		pesquisa = in.nextInt();
+		
+		
 		// pesquisa
 		for( int i = 0; i < A.length; i++ )
 		{
-			if( A[ i ] == 2 )
+			if( A[ i ] == pesquisa )
 			{
-				System.out.println("Valor 2 encontrado na posição -> " + i );
+				System.out.println("Valor " + pesquisa + " encontrado na posição -> " + i );
 			} else {
 				System.out.println("Valor 2 nao encontrado");
 			}
