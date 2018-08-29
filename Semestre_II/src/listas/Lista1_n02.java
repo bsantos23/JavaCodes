@@ -27,10 +27,10 @@ public class Lista1_n02 {
 		do
 		{
 			System.out.println("1 - Cadastrar dados no vetor\n"
-							 	  + "2 - Ordenar dados do vetor\n"
-							 	  + "3 - Pesquisar dado no vetor\n"
-							 	  + "4 - Exibir dados do vetor\n"
-							 	  + "0 - Sair");
+						+ "2 - Ordenar dados do vetor\n"
+						+ "3 - Pesquisar dado no vetor\n"
+						+ "4 - Exibir dados do vetor\n"
+						+ "0 - Sair");
 			
 			System.out.print("\nInforme uma opcao: ");
 			option = in.next().charAt(0);
@@ -45,9 +45,10 @@ public class Lista1_n02 {
 
 					for( int i = 0; i < array.length; i++ )
 					{
-						System.out.print((i + 1) + "� Valor: ");
+						System.out.print((i + 1) + " - Valor: ");
 						array[ i ] = in.nextInt();
-						count--;	 // Define que as posicoes do vetor foram ocupadas
+
+						count--; // Decrementa o valor de count quando uma posição do vetor e ocupada
 					}
 					
 					System.out.println("");	// Nova linha em branco
@@ -115,6 +116,8 @@ public class Lista1_n02 {
 							System.out.println(); // Nova linha em branco
 						
 						} // fim do if interno
+						
+						countWhile = 0; // Zera o contador para nova pesquisa
 
 					} // fim do if/else
 					
