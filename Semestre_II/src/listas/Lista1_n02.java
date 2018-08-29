@@ -45,9 +45,9 @@ public class Lista1_n02 {
 
 					for( int i = 0; i < array.length; i++ )
 					{
-						System.out.print((i + 1) + "º Valor: ");
+						System.out.print((i + 1) + "ï¿½ Valor: ");
 						array[ i ] = in.nextInt();
-						count--;	// Define que as posicoes do vetor foram ocupadas
+						count--;	 // Define que as posicoes do vetor foram ocupadas
 					}
 					
 					System.out.println("");	// Nova linha em branco
@@ -96,7 +96,7 @@ public class Lista1_n02 {
 					
 					} else {
 						
-						System.out.print("\nInforme um valor inteiro para a pesquisa: \n");
+						System.out.print("\nInforme um valor inteiro para a pesquisa: ");
 						valueForSearch = in.nextInt();
 					
 						while( (countWhile < array.length) && (valueForSearch != array[ countWhile ]) ) {
@@ -112,6 +112,7 @@ public class Lista1_n02 {
 						} else {
 						
 							System.out.println("\n## Resultado encontrado na posicao: " + countWhile);
+							System.out.println(); // Nova linha em branco
 						
 						} // fim do if interno
 
