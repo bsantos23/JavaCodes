@@ -16,6 +16,7 @@ public class Lista1_n02 {
 		int aux;
 		int countWhile = 0;
 		
+		// Preenche o vetor com valor inteiro negativo
 		for( int i = 0; i < array.length; i++ )
 		{
 			array[ i ] = -1;
@@ -26,12 +27,12 @@ public class Lista1_n02 {
 		do
 		{
 			System.out.println("1 - Cadastrar dados no vetor\n"
-							 + "2 - Ordenar dados do vetor\n"
-							 + "3 - Pesquisar dado no vetor\n"
-							 + "4 - Exibir dados do vetor\n"
-							 + "5 - Sair");
+							 	  + "2 - Ordenar dados do vetor\n"
+							 	  + "3 - Pesquisar dado no vetor\n"
+							 	  + "4 - Exibir dados do vetor\n"
+							 	  + "0 - Sair");
 			
-			System.out.print("\nOpcao: ");
+			System.out.print("\nInforme uma opcao: ");
 			option = in.next().charAt(0);
 			
 			switch( option )
@@ -40,27 +41,26 @@ public class Lista1_n02 {
 					
 					// POPULACAO DO VETOR
 					
-					System.out.println("");
+					System.out.println("");	// Nova linha em branco
 
 					for( int i = 0; i < array.length; i++ )
 					{
 						System.out.print((i + 1) + "º Valor: ");
 						array[ i ] = in.nextInt();
+						count--;	// Define que as posicoes do vetor foram ocupadas
 					}
 					
-					count = 0;
-					
-					System.out.println("");
+					System.out.println("");	// Nova linha em branco
 					
 					break;
 				
 				case '2':
 					
-					// ORDENACAO
+					// ORDENACAO DOS DADOS
 					
 					if( count == array.length ) {
 						
-						System.out.println("\n>>> Nao foram encontrado dados a serem organizados!\n");
+						System.out.println("\n>>> Sem dados para classificar!\n");
 					
 					} else {
 						
@@ -74,7 +74,7 @@ public class Lista1_n02 {
 									array[ j ] = array[ j + 1 ];
 									array[ j + 1 ] = aux;
 									
-								} // fim do if
+								}
 								
 							} // fim do for interno
 							
@@ -82,26 +82,27 @@ public class Lista1_n02 {
 						
 					} // fim do if/else
 					
-					System.out.println(""); // nova linha
+					System.out.println(""); // Nova linha em branco
 					
 					break;
 					
 				case '3':
 					
-					// PESQUISA
+					// PESQUISA DE DADOS
 					
 					if( count == array.length ) {
 						
-						System.out.println("\n>>>Sem dados no vetor para pesquisar!\n");
+						System.out.println("\n>>> Sem dados para pesquisar!\n");
 					
 					} else {
 						
 						System.out.print("\nInforme um valor inteiro para a pesquisa: \n");
 						valueForSearch = in.nextInt();
 					
-						while( (countWhile < array.length) && (valueForSearch != array[ countWhile ]) )
-						{
+						while( (countWhile < array.length) && (valueForSearch != array[ countWhile ]) ) {
+							
 							countWhile++;
+						
 						}
 						
 						if( countWhile == array.length ) {
@@ -112,7 +113,7 @@ public class Lista1_n02 {
 						
 							System.out.println("\n## Resultado encontrado na posicao: " + countWhile);
 						
-						}
+						} // fim do if interno
 
 					} // fim do if/else
 					
@@ -120,13 +121,13 @@ public class Lista1_n02 {
 					
 				case '4':
 					
-					// LISTAGEM
+					// LISTAGEM DOS DADOS
 					
-					System.out.println("");
+					System.out.println("");	// Nova linha em branco
 					
 					if( count == array.length ) {
 						
-						System.out.println("\n>>>Dados para listagem nao encontrados!\n");
+						System.out.println("\n>>> Nao ha dados para listar!\n");
 					
 					} else {
 						
@@ -135,22 +136,20 @@ public class Lista1_n02 {
 							System.out.println("I[" + i + "] -> " + array[ i ]);
 						}
 					
-					}
+					} // fim do if/else
 					
-					System.out.println("");
+					System.out.println("");	// Nova linha em branco
 					
 					break;
 					
 				default :
 					
-					System.out.println("\n OPCAO NAO ENCONTRADA!\n");
+					System.out.println("\nOPCAO NAO ENCONTRADA!\n");
 					
-					break;
-					
-			} // fim do switch
+			} // fim do switch/case
 			
-		} while (option != '5');
+		} while(option != '0');
 
-	}
+	}	// fim de main
 
-}
+}	// fim da classe Lista1_n02
