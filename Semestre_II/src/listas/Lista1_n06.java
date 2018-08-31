@@ -1,8 +1,8 @@
-package listas;
+ package listas;
 
 import java.util.Scanner;
 
-public class Lista1_06 {
+public class Lista1_n06 {
 
 	public static void main(String[] args) {
 		
