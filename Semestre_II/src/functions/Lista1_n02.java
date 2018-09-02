@@ -2,8 +2,6 @@ package functions;
 
 import java.util.Scanner;
 
-import javax.swing.plaf.synth.SynthSeparatorUI;
-
 public class Lista1_n02 {
 	
 	static Scanner in = new Scanner(System.in);
