@@ -10,9 +10,9 @@ public class Lista02_n09 {
 		int menorValor = 0;
 		
 		if( valorA < valorB ) {
-			System.out.print("\n>>> " + valorA + " e o menor valor");
+			menorValor = valorA;
 		} else {
-			System.out.print("\n>>> " + valorB + " e o menor valor");
+			menorValor = valorB;
 		}
 		
 		return menorValor;
@@ -30,11 +30,11 @@ public class Lista02_n09 {
 		System.out.print("Informe um valor inteiro: ");
 		valorA = in.nextInt();
 		
-		System.out.print("\nInforme outro valor inteiro: ");
+		System.out.print("Informe outro valor inteiro: ");
 		valorB = in.nextInt();
 		
 		// Chama a funcao menorValor() passando os parametros reais
-		menorValor(valorA, valorB);
+		System.out.print("\nO menor valor informado foi: " + menorValor(valorA, valorB));
 
 	} // fim da funcao main()
 
