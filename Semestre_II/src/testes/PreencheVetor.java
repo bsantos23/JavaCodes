@@ -6,12 +6,58 @@ public class PreencheVetor {
 
 	static Scanner in = new Scanner(System.in);
 	
+	// MENU
+	public static void menu(int array[]) {
+		
+		char option = 0;
+
+		do {
+			
+			System.out.println(); // Nova linha em branco
+			System.out.println("+================================+\n"
+							+ "||     1 - Cadastrar dados      ||\n"
+				 	  		+ "||     2 - Ordenar dados        ||\n"
+				 	  		+ "||     3 - Pesquisar dado       ||\n"
+				 	  		+ "||     4 - Exibir dados         ||\n"
+				 	  		+ "||     0 - Sair                 ||\n"
+				 	  		+ "+================================+\n"
+				 	  		+ "\nOpcao....: ");
+			
+			option = in.next().charAt(0);
+			
+			switch( option ) {
+			
+			case '1':
+				
+				fillArray(array);
+				
+				break;
+				
+			case '2':
+				
+				sort(array);
+				
+				break;
+				
+			case '4':
+				
+				showData(array);
+				
+				break;
+			
+			}
+			
+		} while( option != '0' );
+		
+	} // end menu()
+	
+	
 	// PREENCHER ARRAY
 	public static void fillArray(int[] array) {
 		
 		for( int i = 0; i < array.length; i++ ) {
 			
-			System.out.print((i + 1) + "º Valor: ");
+			System.out.print((i + 1) + "ï¿½ Valor: ");
 			array[ i ] = in.nextInt();
 			
 		}
@@ -62,9 +108,11 @@ public class PreencheVetor {
 		// Cria vetor de inteiro
 		int[] array = new int[ 5 ];
 		
-		fillArray(array);
-		sort(array);
-		showData(array);
+		//fillArray(array);
+		//sort(array);
+		//showData(array);
+		
+		menu(array);
 		
 	} // end main()
 
