@@ -7,49 +7,19 @@ public class PreencheVetor {
 	static Scanner in = new Scanner(System.in);
 	
 	// MENU
-	public static void menu(int array[]) {
+	public static void menu() {
 		
-		char option = 0;
-
-		do {
-			
-			System.out.println(); // Nova linha em branco
-			System.out.println("+================================+\n"
+		System.out.println(); // Nova linha em branco
+		System.out.print("+================================+\n"
 							+ "||     1 - Cadastrar dados      ||\n"
-				 	  		+ "||     2 - Ordenar dados        ||\n"
-				 	  		+ "||     3 - Pesquisar dado       ||\n"
-				 	  		+ "||     4 - Exibir dados         ||\n"
-				 	  		+ "||     0 - Sair                 ||\n"
-				 	  		+ "+================================+\n"
-				 	  		+ "\nOpcao....: ");
-			
-			option = in.next().charAt(0);
-			
-			switch( option ) {
-			
-			case '1':
-				
-				fillArray(array);
-				
-				break;
-				
-			case '2':
-				
-				sort(array);
-				
-				break;
-				
-			case '4':
-				
-				showData(array);
-				
-				break;
-			
-			}
-			
-		} while( option != '0' );
+						   + "||     2 - Ordenar dados        ||\n"
+							+ "||     3 - Pesquisar dado       ||\n"
+							+ "||     4 - Exibir dados         ||\n"
+							+ "||     0 - Sair                 ||\n"
+							+ "+================================+\n"
+							+ "\nOpcao....: ");
 		
-	} // end menu()
+	} // fim de menu()
 	
 	
 	// PREENCHER ARRAY
@@ -57,7 +27,7 @@ public class PreencheVetor {
 		
 		for( int i = 0; i < array.length; i++ ) {
 			
-			System.out.print((i + 1) + "� Valor: ");
+			System.out.print("\n" + (i + 1) + " - Valor: ");
 			array[ i ] = in.nextInt();
 			
 		}
@@ -70,7 +40,7 @@ public class PreencheVetor {
 		
 		for( int i = 0; i < array.length; i++ ) {
 			
-			System.out.println("I[" + i + "] -> " + array[ i ]);
+			System.out.println("\nI[" + i + "] -> " + array[ i ]);
 			
 		}
 		
@@ -105,15 +75,49 @@ public class PreencheVetor {
 	// MAIN
 	public static void main(String[] args) {
 		
-		// Cria vetor de inteiro
-		int[] array = new int[ 5 ];
+		int array[] = new int[ 5 ];
+		char opcao;
 		
-		//fillArray(array);
-		//sort(array);
-		//showData(array);
-		
-		menu(array);
-		
-	} // end main()
+		do {
+			
+			menu();
+			opcao = in.next().charAt(0);
+			
+			switch( opcao ) {
+			
+				case '1':
+			
+					fillArray(array);
+					break;
+				
+				case '2':
+				
+					sort(array);
+					break;
+				
+				case '3':
+				
+					// Your code is here
+					break;
+				
+				case '4':
+				
+					showData(array);
+					break;
+					
+				case '0':
+					
+					System.exit(0);
+					
+				default :
+					
+					System.out.print("Opcao nao encontrada!");
+					break;
+			
+			}
+			
+		} while( opcao != '0' );
 
-}
+	} // fim de main()
+
+} // Fecha a classe PreencheVetor
