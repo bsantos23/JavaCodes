@@ -20,7 +20,9 @@ public class TestaVetor {
 		}
 		
 		if( emptyPos != 0 ) {
+			
 			vetorPreenchido = true;
+			
 		}
 		
 		return vetorPreenchido;
