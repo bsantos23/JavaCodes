@@ -53,10 +53,8 @@ public class Lista1_n02 {
 	} // fim de fillArray() 
 	
 	
-	// ORDENA OS DADOS DO VETOR
+	// ORDENA OS DADOS DO VETOR (Bubble Sort)
 	public static void sort(int array[]) {
-		
-		// Implementa o algoritmo de ordenacao Bubble Sort
 		
 		int aux;
 		
@@ -191,26 +189,16 @@ public class Lista1_n02 {
 						System.out.print("\n>>> Informe um valor para pesquisar: ");
 						valueForSearch = in.nextInt();
 						
-						// Checa valor informado pelo usuario
-						if( valueForSearch >= 0 ) {
+						indexFound = search(array, valueForSearch);
+						
+						if( indexFound != -1 ) {
 							
-							indexFound = search(array, valueForSearch);
-							
-							// Checa se a pesquisa retornou resultado
-							if( indexFound != -1 ) {
-								
-								System.out.println("\n## Resultado encontrado na posicao: " + indexFound + "\n");
-							
-							} else {
-								
-								System.out.println("\n## A pesquisa nao retornou resultado\n");
-							
-							} // fim do if interno
-							
+							System.out.println("\n## Resultado encontrado na posicao: " + indexFound + "\n");
+						
 						} else {
 							
-							System.out.println("\n!! Informe somente valores inteiros nao negativos (Ex.: 0 1 2 3 ... )");
-							
+							System.out.println("\n## A pesquisa nao retornou resultado\n");
+						
 						} // fim do if interno
 						
 					} // fim do if externo
@@ -249,4 +237,4 @@ public class Lista1_n02 {
 
 	} // fim de main()
 
-}	// fim da classe Lista1_n02 
+} // fim da classe Lista1_n02 
