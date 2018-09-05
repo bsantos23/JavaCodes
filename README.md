@@ -1,4 +1,4 @@
-# JavaCodes
+# Java Codes
 
 @Author: Breno A. Santos
 
