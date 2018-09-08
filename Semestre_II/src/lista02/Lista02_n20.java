@@ -9,33 +9,84 @@ public class Lista02_n20 {
 	// MENU DO USUARIO
 	public static void menu() {
 		
-		System.out.print("\n1 - Cadastrar dados do vendedor"
-				+ "\n2 - Alterar valor de venda"
-				+ "\n3 - Consultar maior venda mensal"
-				+ "\n0 - Sair"
-				+ "\n\nOpcao....: ");
+		System.out.print("\n+-------------------------------------------------------------+"
+				+ "\n|                   GERENCIAMENTO DE VENDAS                   |"
+				+ "\n+-------------------------------------------------------------+"
+				+ "\n|               1 - CADASTRAR DADOS DO VENDEDOR               |"
+				+ "\n|               2 - ALTERAR VALOR DE VENDA                    |"
+				+ "\n|               3 - LISTAR VALORES DAS VENDAS                 |"
+				+ "\n|               4 - CONSULTAR MAIOR VALOR VENDIDO             |"
+				+ "\n|               0 - Sair                                      |"
+				+ "\n+-------------------------------------------------------------+"
+				+ "\n\n>>>> Opcao....: ");
 		
 	} // fim de menu
 
 	
+	// ALTERA VALOR PADRAO DO VETOR sellerCode[]
+	public static void changeDefaultValue(int cdSeller[]) {
+		
+		/**
+		 * Altera o valor default de cada posicao de 0 para -1 para
+		 * que tarefas como comparacao de valor, pesquisa, saber
+		 * se o vetor está vazio ou saber se uma determinada posição
+		 * do vetor está vazia possam ser feitas sem problemas, caso 
+		 * o usuario decida preencher uma determinada posicao do 
+		 * vetor com o valor 0, esses problemas poderiam vir a ocorrer 
+		 * porque um vetor declarado mas não preenchido, tem como 
+		 * referencia o valor 0.
+		 */
+		
+		for( int i = 0; i < cdSeller.length; i++ ) 
+		{
+			cdSeller[ i ] = -1;
+		}
+
+	} // fim de changeDefaultValue()
+	
+	
+	// CHECA SE O VETOR ESTA VAZIO
+	public static boolean checkIfEmpty(int cdSeller[]) {
+	
+		boolean empty = true;
+		int count = 0;
+		
+		for( int i = 0; i < cdSeller.length; i++ ) {
+			if( cdSeller[ i ] == -1 )
+				count++;
+		}
+		
+		if( count == cdSeller.length ) {
+			empty = true;
+		} else {
+			empty = false;
+		}
+		
+		return empty;
+		
+	} // fim de checkIfEmpty()
+	
+	
 	// PREENCHER DADOS DO VENDEDOR
 	public static void fillArray(int cdSeller[], String dsSeller[], double cdMontValue[]) {
 		
-		for( int l = 0; l < cdSeller.length; l++ ) {
+		for( int i = 0; i < cdSeller.length; i++ ) {
+			
+			System.out.println("\n## ITEM :: " + (i + 1) + " ##");
 			
 			// Recebe codigo do vendedor
-			System.out.print((l + 1) + " Codigo.....................: " + "\n");
-			cdSeller[ l ] = in.nextInt();
+			System.out.print("\n> Codigo.......................: ");
+			cdSeller[ i ] = in.nextInt();
 			
 			// Recebe nome do vendedor
-			System.out.print((l + 1) + " Vendedor ..................: " + "\n");
-			dsSeller[ l ] = in.next();
+			System.out.print("> Vendedor ....................: ");
+			dsSeller[ i ] = in.next().toUpperCase();
 			
 			// Recebe valor da venda do vendedor
-			System.out.print((l + 1) + " Valor total mensal ........: " + "\n");
-			cdMontValue[ l ] = in.nextDouble();
+			System.out.print("> Total vendido no mes ........: R$ ");
+			cdMontValue[ i ] = in.nextDouble();
 			
-			System.out.println();
+			System.out.println("\n+---------------------------------------+");
 			
 		}
 			
@@ -56,14 +107,14 @@ public class Lista02_n20 {
 				
 				found = true;
 				
-				System.out.println("Novo valor....: ");
+				System.out.print("\n> Novo valor....: ");
 				cdMontValue[ count ] = in.nextDouble();
 				
-				result = "Valor de venda alterado com sucesso!";
+				result = ">>> Alteracao realizada com sucesso!";
 				
 			} else {
 				
-				result = "Vendendor nao encontrado";
+				result = "** Vendendor nao cadastrado!";
 				
 			} // fim do if
 			
@@ -72,6 +123,7 @@ public class Lista02_n20 {
 		} // fim do while
 		
 		return result;
+		
 	} // fim de changeData()
 	
 	
@@ -80,9 +132,9 @@ public class Lista02_n20 {
 		
 		for( int i = 0; i < cdSeller.length; i++ ) {
 			
-			System.out.println("\nVendedor ===========> " + dsSeller[ i ] + ""
-					+ "\nCodigo ===========> " + cdSeller[ i ] + ""
-					+ "\nValor mensal ===========> " + cdMontValue[ i ]);
+			System.out.println("\n> CODIGO .........: " + cdSeller[ i ] + ""
+								  + "\n> VENDEDOR .......: " + dsSeller[ i ] + ""
+								  + "\n> TOTAL MENSAL ...: " + cdMontValue[ i ]);
 			
 		} // fim do for
 		
@@ -92,26 +144,44 @@ public class Lista02_n20 {
 	// CONSULTAR MAIOR VALOR DE VENDA
 	public static int SearchGreaterValue(double cdMontValue[]) {
 		
-		double minValue;
+		int count = 0;
 		double maxValue = 0;
 		int maxValueIndex = -1;
 		
-		for( int i = 0; i < cdMontValue.length - 1; i++ ) {
+		// Checa se existe apenas 1 posicao no vetor
+		if( cdMontValue.length == 1 )
+		{
 			
-			minValue = cdMontValue[ i ];
+			maxValueIndex = 0;
 			
-			if( cdMontValue[ i + 1 ] > minValue ) {
+		} else {
+			
+			maxValue = cdMontValue[ 0 ]; // Guarda o valor do indice 0 do vetor
+			
+			for( int i = 0; i < cdMontValue.length - 1; i++ )
+			{	
+				if( cdMontValue[ i + 1 ] > maxValue )
+				{
+					maxValueIndex = i + 1;
+				} else {
 				
-				maxValue = cdMontValue[ i + 1 ];
-				maxValueIndex = i + 1;
+					if( cdMontValue[ i ] == maxValue ) {
+						count++;
+					}
 				
-			} // fim do if
+				} // fim do if externo
+				
+			} // fim do for
 			
-		} // fim do for
-		
+			if( count == cdMontValue.length )
+				maxValueIndex = -2; // -2 indica que todos os valores no vetor sao iguais
+			
+		} // fim do if externo
+			
 		return maxValueIndex;
 		
-	}
+	} // fim de SearchGreaterValue()
+	
 	
 	// MAIN
 	public static void main(String[] args) {
@@ -123,8 +193,10 @@ public class Lista02_n20 {
 		char option;
 		String search;
 		
-		do {
+		changeDefaultValue(sellerCode);
 		
+		do {
+
 			menu();
 			option = in.next().charAt(0);
 		
@@ -133,47 +205,102 @@ public class Lista02_n20 {
 				
 				case '1':
 					
+					System.out.print("\n+-------------------------------------------------------------+");
+					System.out.print("\n|                     CADASTRAR VENDEDOR                      |");
+					System.out.print("\n+-------------------------------------------------------------+\n");
+						
 					fillArray(sellerCode, sellerName, montSaleValue);
 					
 					break;
 					
 				case '2':
 					
-					System.out.print("Nome do vendedor....: ");
-					search = in.next();
+					if( checkIfEmpty(sellerCode) == false ) {
 					
-					System.out.print("\n" + changeData(search, sellerName, montSaleValue));
+						System.out.print("\n+-------------------------------------------------------------+");
+						System.out.print("\n|                   ALTERAR VALOR DE VENDA                    |");
+						System.out.print("\n+-------------------------------------------------------------+\n");
+					
+						System.out.print("\n> Vendedor ....: ");
+						search = in.next();
+					
+						System.out.print("\n" + changeData(search, sellerName, montSaleValue) + "\n");
+						
+					} else {
+						
+						System.out.println("\n** Sem dados para alterar!");
+						
+					} // fim do if
 					
 					break;
 					
 				case '3':
 					
-					showData(sellerCode, sellerName, montSaleValue);
+					if( checkIfEmpty(sellerCode) == false ) {
+						
+						System.out.print("\n+-------------------------------------------------------------+");
+						System.out.print("\n|                 LISTA DE DADOS CADASTRADOS                  |");
+						System.out.print("\n+-------------------------------------------------------------+\n");
+						
+						showData(sellerCode, sellerName, montSaleValue);
+						
+					} else {
+						
+						System.out.println("\n** Sem dados para listar!"
+											  + "\n** Tente usar a opcao 1.");
+						
+					} // fim do if
 					
 					break;
 					
 				case '4':
+									
+					if( checkIfEmpty(sellerCode) == false ) {
 					
-					int posIndex = SearchGreaterValue(montSaleValue);
-					
-					if( posIndex != -1 ) {
+						int posIndex = SearchGreaterValue(montSaleValue);
 						
-						System.out.println("\n>>> Maior venda do mes!!!!!");
-						System.out.println(sellerCode[ posIndex ]);
-						System.out.println(sellerName[ posIndex ]);
-						System.out.println(montSaleValue[ posIndex ]);
+						if( posIndex >= 0 )
+						{
+							
+							System.out.print("\n+-------------------------------------------------------------+");
+							System.out.print("\n|                 MAIOR VALOR VENDIDO NO MES                  |");
+							System.out.print("\n+-------------------------------------------------------------+\n");
 						
-					} else {
+							System.out.print("\n>>> Maior total vendido no mes: \n");
+							System.out.print("\n> CODIGO: ....: " + sellerCode[ posIndex ]);
+							System.out.print("\n> VENDEDOR: ..: " + sellerName[ posIndex ]);
+							System.out.print("\n> TOTAL ......: R$ " + montSaleValue[ posIndex ] + "\n");
+							
+						} else {
+							
+							if( posIndex == -2 )
+							{
+								
+								System.out.print("\n>>> Todos os vendedores possuem o mesmo total vendido no mes!"
+										+ "\n>>> Use a opcao 3 do menu para listar os valores das vendas de cada vendedor.");
+								
+							}
+							
+						} // fim do if interno
+
+				} else {
 						
-						System.out.println("\nValores iguais!");
+					System.out.println("\n** Nao existem valores cadastrados no sistema!"
+										  + "\n** Use a opcao 1 para realizar o cadastro de valores.");
 						
-					}
+				} // fim do if
 
 					break;
 					
 				case '0':
 					
 					System.exit(0);
+					
+				default :
+					
+					System.out.print("\n# Opcao invalida! Tente novamente.\n");
+					
+					break;
 			
 			} // fim do switch
 		
