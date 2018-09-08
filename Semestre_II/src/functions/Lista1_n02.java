@@ -110,16 +110,27 @@ public class Lista1_n02 {
 		
 		for( int i = 0; i < array.length && found == false; i++ ) {
 			
+			// Alterar variavel valueForSearch para receber valor em outra variavel
 			if( array[ i ] == valueForSearch ) {
 				
-				valueFound = i; // Guarda o index da informacao encontrada
-				found = true; // Define found como true para sair do for
+				// Guarda o index do resultado encontrado
+				valueFound = i;
+				
+				// Define found como true para sair do for
+				found = true;
 			
 			} // fim do if
 			
 		} // fim do for
 		
-		// Zera o valor da variavel para pesquisa
+		/**
+		 * Ao final de cada pesquisa, e atribuido 
+		 * a variavel valueForSearch o valor "0"
+		 * para que a proxima pesquisa possa retornar
+		 * o valor encontrado na pesquisa corrente e
+		 * nao o valor armazenado na pesquisa anterior
+		 * com o programa ainda em execucao.
+		 */
 		valueForSearch = 0;
 			
 		return valueFound;
@@ -151,7 +162,7 @@ public class Lista1_n02 {
 		do {
 			
 			menu();
-			opcao = in.next().charAt(0);	// Recebe a opcao do usuario
+			opcao = in.next().charAt(0);
 			
 			switch( opcao ) {
 			
@@ -181,7 +192,9 @@ public class Lista1_n02 {
 				
 					if( checkIfEmpty(array) == true ) {
 					
+						System.out.print("\n===========================");
 						System.out.print("\n> Sem dados para pesquisar!\n");
+						System.out.print("===========================\n");
 					
 					} else {
 						
@@ -219,16 +232,18 @@ public class Lista1_n02 {
 				
 				case '4':
 				
-					if( checkIfEmpty(array) == true ) {
-						
-						System.out.print("\n> Sem dados para exibir!\n");
-					
-					} else {
+					if( checkIfEmpty(array) != true ) {
 						
 						System.out.println();
 						
 						showData(array);
 					
+					} else {
+						
+						System.out.print("\n========================");
+						System.out.print("\n> Sem dados para exibir!\n");
+						System.out.print("========================\n");
+
 					} // fim do if
 					
 					break;
@@ -239,7 +254,9 @@ public class Lista1_n02 {
 					
 				default :
 					
-					System.out.print("\n***Opcao nao encontrada!\n");
+					System.out.print("\n========================");
+					System.out.print("\n*** Opcao nao encontrada!\n");
+					System.out.print("========================\n");
 					
 					break;
 			
