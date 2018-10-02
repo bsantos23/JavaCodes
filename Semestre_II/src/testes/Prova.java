@@ -12,7 +12,7 @@ public class Prova {
 		System.out.print("\n1 - Cadastrar Produtos"
 							+ "\n2 - Listar Produtos"
 							+ "\n3 - Pesquisar Produto"
-							+ "\n4 - Percentual por faixa de preço"
+							+ "\n4 - Percentual por faixa de preï¿½o"
 							+ "\n0 - Sair"
 							+ "\n\nOpcao ....: ");
 		
@@ -41,7 +41,7 @@ public class Prova {
 	
 	
 	// ORDENA POR ORDEM ALFABETICA
-	public static void ordena(String newProduto[]) {
+	public void ordena(String newProduto[]) {
 		
 		int indexAtual;
 		String produtoAtual;
@@ -122,7 +122,7 @@ public class Prova {
 		double percentual = 0.0;
 		//double valorTotal = 0;
 		
-		// Retorna o percentual de acordo com o valor unitário de cada produto
+		// Retorna o percentual de acordo com o valor unitï¿½rio de cada produto
 		for( int i = 0; i < valor.length; i++ )
 		{
 			//valorTotal = valor[ i ] * quantidade[ i ];

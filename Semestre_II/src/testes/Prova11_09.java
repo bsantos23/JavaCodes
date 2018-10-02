@@ -13,22 +13,28 @@ public class Prova11_09 {
 				+ "\n\nOpcao ......: ");
 	}
 	
-	public static void calculaSalarioFinal(double venda[], double salarioFinal[]) {
-		double pontos = 0;
-		for( int i = 0; i < venda.length; i++ ) {
-			pontos = (venda[ i ] /50) * 2;
-			salarioFinal[ i ] = pontos * 25;
-		}
-	}
 	
 	public static void cadastra(String nome[], double venda[]) {
+		
 		for( int i = 0; i < nome.length; i++ ) {
+		
 			System.out.print("\n# REGISTRO :: " + (i + 1) + " #");
 			System.out.print("\nFuncionario .......: ");
 			nome[ i ] = entrada.next().toUpperCase();
 			
 			System.out.print("\nVenda Mensal ......: ");
 			venda[ i ] = entrada.nextDouble();
+		
+		}
+	
+	} // fim de cadastra()
+	
+	
+	public static void calculaSalarioFinal(double venda[], double salarioFinal[]) {
+		double pontos = 0;
+		for( int i = 0; i < venda.length; i++ ) {
+			pontos = (venda[ i ] /50) * 2;
+			salarioFinal[ i ] = pontos * 25;
 		}
 	}
 	
@@ -46,7 +52,7 @@ public class Prova11_09 {
 	public static void main(String[] args) {
 		int tam = 2;
 		String nomeFuncionario[] = new String[ tam ];
-		String nomeEmOrdem[] = new String[ tam ];
+		String nomesEmOrdem[] = new String[ tam ];
 		double vendaMensal[] = new double[ tam ];
 		double salarioFinal[] = new double[ tam ];
 		char opcao;
@@ -69,13 +75,25 @@ public class Prova11_09 {
 						System.out.print("\nSalario ...........: " + salarioFinal[ i ] + "\n");
 					}
 					break;
+					
+				default :
+					
+					System.out.print("\n> Opcao nao encontrada!\n");
+					
+					break;
 			
 				case '0':
-					ordena(nomeFuncionario, nomeEmOrdem);
+					ordena(nomeFuncionario, nomesEmOrdem);
 					System.out.print("\n>>>>>> LISTA DE FUNCIONARIOS <<<<<<\n");
-					break;
+					
+					for( int i = 0; i < nomesEmOrdem.length; i++ ) {
+						System.out.print("\n" + (i + 1) + " - " + nomesEmOrdem[ i ]);
+					}
+					
+					System.exit(0);
 			}
-		}
+			
+		} while( opcao != 0 );
 		
 
 	}
